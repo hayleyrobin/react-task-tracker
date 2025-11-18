@@ -10,6 +10,12 @@ function App() {
     { id: 3, text: "Winter Cleaning", day: "Feb 7th at 3:30pm", reminder: false },
   ]);
 
+  // Add Task
+  const addTask = (task) => {
+    const id = Math.floor(Math.random() * 10000) + 1; // generate random id
+    const newTask = { id, ...task }; // create new task object with id and task data
+    setTasks([...tasks, newTask]); // add new task to tasks array 
+  };
   //Delete Task
   const deleteTask = (id) => {
     setTasks(tasks.filter((task) => task.id !== id));
@@ -26,7 +32,7 @@ function App() {
   return (
     <div className="container">
       <Header />
-      <AddTask />
+      <AddTask onAdd={addTask} />
       {/*if tasks exist, render Tasks component, else show message*/}
       {tasks.length > 0 ? (<Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} />) : ('No Tasks to Show')}
     </div>
