@@ -33,7 +33,8 @@ function App() {
 
   return (
     <div className="container">
-      <Header onAdd={() => setShowAddTask(!showAddTask)} />
+      {/* pass onAdd prop to Header to toggle showAddTask state */}
+      <Header onAdd={() => setShowAddTask(!showAddTask)} showAdd={showAddTask} />
       {/* addtask is deopendent on showAddTask state */}
       {showAddTask && <AddTask onAdd={addTask} />}
       {/*if tasks exist, render Tasks component, else show message*/}
