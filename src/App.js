@@ -16,7 +16,8 @@ function App() {
   return (
     <div className="container">
       <Header />
-      <Tasks tasks={tasks} onDelete={deleteTask} />
+      {/*if tasks exist, render Tasks component, else show message*/}
+      {tasks.length > 0 ? (<Tasks tasks={tasks} onDelete={deleteTask} />) : ('No Tasks to Show')}
     </div>
   );
 }
