@@ -19,12 +19,20 @@ function App() {
 
   // Fetch Tasks
       //fetch returns a promise
-    const fetchTasks = async () => { //await promise/response from server
-      const result = await fetch('http://localhost:5002/tasks'); //fetch tasks from json server 
-      const data = await result.json(); //await data from response in json format
+  const fetchTasks = async () => { //await promise/response from server
+    const result = await fetch('http://localhost:5002/tasks'); //fetch tasks from json server 
+    const data = await result.json(); //await data from response in json format
 
-      return data;
-    }
+    return data;
+  };
+
+  // Fetch Task
+  const fetchTask = async (id) => { //await promise/response from server
+    const result = await fetch(`http://localhost:5002/tasks/${id}`); //fetch task from json server using backticks to insert id
+    const data = await result.json(); //await data from response in json format
+
+    return data;
+  };
   // Add Task
   const addTask = async (task) => {
     const result = await fetch('http://localhost:5002/tasks', {
@@ -52,10 +60,23 @@ function App() {
   };
 
   // Toggle Reminder
-  const toggleReminder = (id) => {
+  const toggleReminder = async (id) => {
+    const taskToToggle = await fetchTask(id); //get the task to toggle
+    const updatedTask = { ...taskToToggle, reminder: !taskToToggle.reminder }; //create updated task with toggled reminder
+
+    const result = await fetch(`http://localhost:5002/tasks/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(updatedTask),
+    });
+
+    const data = await result.json();
+
     //map through tasks, find the one with the matching id, and toggle its reminder property
     setTasks(tasks.map((task) =>
-      task.id === id ? { ...task, reminder: !task.reminder } : task
+      task.id === id ? { ...task, reminder: data.reminder } : task
     ));
   };
 
