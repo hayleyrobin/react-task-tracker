@@ -14,4 +14,5 @@ Responsive design
 - JSON server (optional)
 
 ## Screenshots
-<img width="512" height="836" alt="Screenshot 2025-11-26 at 5 59 47 PM" src="https://github.com/user-attachments/assets/68315c37-457e-4038-b73a-0009d652b56d" /> <img width="520" height="561" alt="Screenshot 2025-11-26 at 5 58 48 PM" src="https://github.com/user-attachments/assets/34d2c168-ce71-4798-88a9-8f1336d56fb6" />
+<img width="512" height="836" alt="Screenshot 2025-11-26 at 5 59 47 PM" src="https://github.com/user-attachments/assets/68315c37-457e-4038-b73a-0009d652b56d" /> <img width="505" height="827" alt="Screenshot 2025-11-26 at 6 02 03 PM" src="https://github.com/user-attachments/assets/98d140de-0be8-4aa5-9173-69731755540f" />
+
