@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import Tasks from "./components/Tasks";
 import AddTask from "./components/AddTask";
 
@@ -84,10 +85,11 @@ function App() {
     <div className="container">
       {/* pass onAdd prop to Header to toggle showAddTask state */}
       <Header onAdd={() => setShowAddTask(!showAddTask)} showAdd={showAddTask} />
-      {/* addtask is deopendent on showAddTask state */}
+      {/* addtask is dependent on showAddTask state */}
       {showAddTask && <AddTask onAdd={addTask} />}
       {/*if tasks exist, render Tasks component, else show message*/}
       {tasks.length > 0 ? (<Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} />) : ('No Tasks to Show')}
+      <Footer />
     </div>
   );
 }
