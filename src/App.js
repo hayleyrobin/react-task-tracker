@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Tasks from "./components/Tasks";
 import AddTask from "./components/AddTask";
+import About from "./components/About";
 
 function App() {
   const [showAddTask, setShowAddTask] = useState(false); // state to show/hide AddTask form
@@ -82,15 +84,24 @@ function App() {
   };
 
   return (
+    <Router>
     <div className="container">
       {/* pass onAdd prop to Header to toggle showAddTask state */}
       <Header onAdd={() => setShowAddTask(!showAddTask)} showAdd={showAddTask} />
-      {/* addtask is dependent on showAddTask state */}
-      {showAddTask && <AddTask onAdd={addTask} />}
-      {/*if tasks exist, render Tasks component, else show message*/}
-      {tasks.length > 0 ? (<Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} />) : ('No Tasks to Show')}
-      <Footer />
+      <Routes>
+      <Route path='/' element={
+        <>
+          {/* addtask is dependent on showAddTask state */}
+          {showAddTask && <AddTask onAdd={addTask} />}
+          {/*if tasks exist, render Tasks component, else show message*/}
+          {tasks.length > 0 ? (<Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} />) : ('No Tasks to Show')}
+        </>
+       } />
+      <Route path='/about' element={<About />} />
+      </Routes>
+      <Footer /> 
     </div>
+    </Router>
   );
 }
 
