@@ -11,6 +11,12 @@
       "text": "Winter Cleaning",
       "day": "Feb 7th at 3:30pm",
       "reminder": false
+    },
+    {
+      "id": "14f2",
+      "text": "Eat Thanksgiving Leftovers",
+      "day": "Monday",
+      "reminder": true
     }
   ]
 }
