@@ -5,11 +5,7 @@ import AddTask from "./components/AddTask";
 
 function App() {
   const [showAddTask, setShowAddTask] = useState(false); // state to show/hide AddTask form
-  const [tasks, setTasks] = useState([
-    { id: 1, text: "Food Shopping", day: "Feb 5th at 2:30pm", reminder: false },
-    { id: 2, text: "Christmas Shopping", day: "Feb 6th at 1:30pm", reminder: true },
-    { id: 3, text: "Winter Cleaning", day: "Feb 7th at 3:30pm", reminder: false },
-  ]);
+  const [tasks, setTasks] = useState([]); // state to hold tasks array
 
   // Add Task
   const addTask = (task) => {
