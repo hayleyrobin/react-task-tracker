@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import Tasks from "./components/Tasks";
 import AddTask from "./components/AddTask";
 import About from "./components/About";
+import TaskDetails from "./components/TaskDetails";
 
 function App() {
   const [showAddTask, setShowAddTask] = useState(false); // state to show/hide AddTask form
@@ -89,15 +90,16 @@ function App() {
       {/* pass onAdd prop to Header to toggle showAddTask state */}
       <Header onAdd={() => setShowAddTask(!showAddTask)} showAdd={showAddTask} />
       <Routes>
-      <Route path='/' element={
-        <>
-          {/* addtask is dependent on showAddTask state */}
-          {showAddTask && <AddTask onAdd={addTask} />}
-          {/*if tasks exist, render Tasks component, else show message*/}
-          {tasks.length > 0 ? (<Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} />) : ('No Tasks to Show')}
-        </>
-       } />
-      <Route path='/about' element={<About />} />
+        <Route path='/' element={
+          <>
+            {/* addtask is dependent on showAddTask state */}
+            {showAddTask && <AddTask onAdd={addTask} />}
+            {/*if tasks exist, render Tasks component, else show message*/}
+            {tasks.length > 0 ? (<Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} />) : ('No Tasks to Show')}
+          </>
+        } />
+        <Route path='/about' element={<About />} />
+        <Route path='/task/:id' element={<TaskDetails />} /> {/* link to hit the route is in Task.js */}
       </Routes>
       <Footer /> 
     </div>
