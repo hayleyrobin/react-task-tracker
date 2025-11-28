@@ -36,6 +36,7 @@ function TaskDetails() {
             <h3>{task.text}</h3>
             <p>{task.day}</p>
             <p>Reminder: {task.reminder ? 'Yes' : 'No'}</p>
+            <p>Completed: {task.completed ? 'Yes' : 'No'}</p>
             <Button text="Go Back" onClick={() => navigate('/')} />
         </div>
     );

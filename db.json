@@ -4,18 +4,26 @@
       "id": "2",
       "text": "Christmas Shopping",
       "day": "Feb 6th at 1:30pm",
-      "reminder": true
+      "reminder": false,
+      "completed": true
     },
     {
       "id": "3",
       "text": "Winter Cleaning",
       "day": "Feb 7th at 3:30pm",
-      "reminder": false
+      "reminder": false,
+      "completed": false
     },
     {
       "id": "14f2",
       "text": "Eat Thanksgiving Leftovers",
       "day": "Monday",
+      "reminder": true
+    },
+    {
+      "id": "cefb",
+      "text": "Read",
+      "day": "November 29",
       "reminder": true
     }
   ]

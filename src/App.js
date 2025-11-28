@@ -22,7 +22,6 @@ function App() {
   }, []); //empty dependency array means it runs if only on initial render
 
   // Fetch Tasks
-      //fetch returns a promise
   const fetchTasks = async () => { //await promise/response from server
     const result = await fetch('http://localhost:5002/tasks'); //fetch tasks from json server 
     const data = await result.json(); //await data from response in json format
@@ -84,18 +83,53 @@ function App() {
     ));
   };
 
+  // Mark Tasks Complete
+  const markAllDone = () => {
+    // map through tasks, set completed to true for all tasks
+    const updateTasks = tasks.map((task) => ({ ...task, completed: true }));
+    // log that the handler was invoked
+    console.log('markAllDone clicked');
+    setTasks(updateTasks);
+    // log the updated tasks array (setState is async so log the new value directly)
+    console.log('updated tasks', updateTasks);
+  };
+  const markIfDone = async (id) => {
+    //fetch task
+    const taskToComplete = await fetchTask(id)
+    //update task
+    const updateTask = { ...taskToComplete, completed: !taskToComplete.completed };
+
+    // update on servee
+    const result = await fetch(`http://localhost:5002/tasks/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(updateTask),
+    });
+
+    const data = await result.json(); // get updated task data
+
+    //update state
+    setTasks(
+      tasks.map((task) =>
+        task.id === id ? { ...task, completed: data.completed } : task
+      )
+    );
+  };
+
   return (
     <Router>
     <div className="container">
       {/* pass onAdd prop to Header to toggle showAddTask state */}
-      <Header onAdd={() => setShowAddTask(!showAddTask)} showAdd={showAddTask} />
+      <Header onAdd={() => setShowAddTask(!showAddTask)} showAdd={showAddTask} onComplete={markAllDone} />
       <Routes>
         <Route path='/' element={
           <>
             {/* addtask is dependent on showAddTask state */}
             {showAddTask && <AddTask onAdd={addTask} />}
             {/*if tasks exist, render Tasks component, else show message*/}
-            {tasks.length > 0 ? (<Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} />) : ('No Tasks to Show')}
+            {tasks.length > 0 ? (<Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} onComplete={markIfDone} />) : ('No Tasks to Show')}
           </>
         } />
         <Route path='/about' element={<About />} />
