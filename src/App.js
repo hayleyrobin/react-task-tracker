@@ -53,7 +53,7 @@ function App() {
     setTasks([...tasks, data]); // add new task to tasks array
   };
 
-  //Delete Task
+  // Delete Task
   const deleteTask = async (id) => {
     await fetch(`http://localhost:5002/tasks/${id}`, { // dont need tp save in a variable since not getting any data back
       method: 'DELETE',
