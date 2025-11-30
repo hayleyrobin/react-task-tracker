@@ -5,7 +5,6 @@ import Button from './Button';
 function TaskDetails() {
     const [loading, setLoading] = useState(true); // state to track loading status
     const [task, setTask] = useState({}); // state to hold task data
-    const [error, setError] = useState(null); // state to hold error message
 
     const params = useParams(); // get the id from the url
     const navigate = useNavigate(); // to navigate programmatically
@@ -21,10 +20,8 @@ function TaskDetails() {
             setTask(data); // set task data
             setLoading(false); // set loading to false after data is fetched
         };
-
         fetchTask();
     })
-
 
     return loading ? (
         <div>

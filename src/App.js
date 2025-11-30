@@ -84,33 +84,40 @@ function App() {
   };
 
   // Mark Tasks Complete
-  const markAllDone = () => {
+  const markAllDone = async () => {
     // map through tasks, set completed to true for all tasks
-    const updateTasks = tasks.map((task) => ({ ...task, completed: true }));
-    // log that the handler was invoked
-    console.log('markAllDone clicked');
-    setTasks(updateTasks);
-    // log the updated tasks array (setState is async so log the new value directly)
-    console.log('updated tasks', updateTasks);
+    const updatedTasks = tasks.map((task) => ({ ...task, completed: true }));
+    // update each task on server
+    await Promise.all(updatedTasks.map(task => 
+      fetch(`http://localhost:5002/tasks/${task.id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify(task),
+      })
+    ));
+    setTasks(updatedTasks);
   };
+  // Mark Single Task Complete
   const markIfDone = async (id) => {
     //fetch task
     const taskToComplete = await fetchTask(id)
     //update task
-    const updateTask = { ...taskToComplete, completed: !taskToComplete.completed };
+    const updatedTask = { ...taskToComplete, completed: !taskToComplete.completed };
 
-    // update on servee
+    // update on server
     const result = await fetch(`http://localhost:5002/tasks/${id}`, {
       method: 'PUT',
       headers: {
         'Content-type': 'application/json',
       },
-      body: JSON.stringify(updateTask),
+      body: JSON.stringify(updatedTask),
     });
 
     const data = await result.json(); // get updated task data
 
-    //update state
+    // update state
     setTasks(
       tasks.map((task) =>
         task.id === id ? { ...task, completed: data.completed } : task
