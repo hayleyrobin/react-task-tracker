@@ -4,7 +4,6 @@ import Button from "./Button";
 
 const Header = ({ title = 'Task Tracker' , onAdd, showAdd, onComplete }) => {
   const location = useLocation(); // get the current route
-  console.log('Header render, onComplete is', onComplete);
   return (
     <header className="header">
       <h1>{title}</h1>
