@@ -77,6 +77,24 @@ body {
   margin:0;
   padding: 5px 9px;
 }
+.task.completed .btn {
+  background: gray;
+}
+.task.completed {
+  text-decoration: line-through;
+  color: gray;
+}
+.view-details {
+  color: rgba(11, 137, 86, 0.412);
+  text-decoration: none;
+  font-size: small;
+}
+.view-details:hover {
+  text-decoration: underline;
+}
+.view-details.completed {
+  color: gray;
+}
 
 .add-form {
   margin-bottom: 40px;

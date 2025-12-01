@@ -12,7 +12,7 @@
       "text": "Eat Thanksgiving Leftovers",
       "day": "Monday",
       "reminder": true,
-      "completed": true
+      "completed": false
     },
     {
       "id": "cefb",
