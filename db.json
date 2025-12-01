@@ -19,7 +19,7 @@
       "text": "Read",
       "day": "November 29",
       "reminder": true,
-      "completed": false
+      "completed": true
     }
   ]
 }
