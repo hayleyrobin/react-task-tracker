@@ -5,21 +5,21 @@
       "text": "Winter Cleaning",
       "day": "Feb 7th at 3:30pm",
       "reminder": false,
-      "completed": true
+      "completed": false
     },
     {
       "id": "14f2",
       "text": "Eat Thanksgiving Leftovers",
       "day": "Monday",
-      "reminder": true,
-      "completed": true
+      "reminder": false,
+      "completed": false
     },
     {
       "id": "cefb",
       "text": "Read",
       "day": "November 29",
       "reminder": true,
-      "completed": true
+      "completed": false
     }
   ]
 }

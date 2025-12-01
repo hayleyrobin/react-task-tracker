@@ -59,6 +59,8 @@ body {
   margin: 5px;
   padding: 10px 20px;
   cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .task.reminder {
@@ -71,23 +73,43 @@ body {
   justify-content: space-between;
 }
 .task .btn {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  margin:0;
+  margin-top: 8px;
   padding: 5px 9px;
+  font-size: 13px;;
 }
 .task.completed .btn {
   background: gray;
+}
+.task.completed .btn-complete {
+  background: gray;
+  cursor: not-allowed;
 }
 .task.completed {
   text-decoration: line-through;
   color: gray;
 }
+.task-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+.btn-complete {
+  background: #333;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  font-size: 13px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
 .view-details {
-  color: rgba(11, 137, 86, 0.412);
+  color: #0a66c2;
   text-decoration: none;
-  font-size: small;
+  display:inline-block;
+  font-weight: 500;
+  margin-right: auto;
 }
 .view-details:hover {
   text-decoration: underline;
@@ -144,3 +166,12 @@ footer {
   border-radius: 5px;
   text-align: center;
 }
+a:link,
+a:visited {
+  text-decoration: none;
+  color: rgb(59, 82, 101);
+}
+a:hover {
+  text-decoration: underline;
+}
+
