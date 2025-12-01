@@ -12,14 +12,14 @@
       "text": "Eat Thanksgiving Leftovers",
       "day": "Monday",
       "reminder": true,
-      "completed": false
+      "completed": true
     },
     {
       "id": "cefb",
       "text": "Read",
       "day": "November 29",
       "reminder": true,
-      "completed": false
+      "completed": true
     }
   ]
 }

@@ -10,6 +10,7 @@ import TaskDetails from "./components/TaskDetails";
 function App() {
   const [showAddTask, setShowAddTask] = useState(false); // state to show/hide AddTask form
   const [tasks, setTasks] = useState([]); // state to hold tasks array
+  const allCompleted = tasks.length > 0 && tasks.every((task) => task.completed); // check if all tasks are completed
 
   // Get Tasks from server
   useEffect(() => {
@@ -137,6 +138,7 @@ function App() {
             {showAddTask && <AddTask onAdd={addTask} />}
             {/*if tasks exist, render Tasks component, else show message*/}
             {tasks.length > 0 ? (<Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} onComplete={markIfDone} />) : ('No Tasks to Show')}
+            {allCompleted && <div className="complete-banner">All tasks are completed!</div>}
           </>
         } />
         <Route path='/about' element={<About />} />
