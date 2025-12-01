@@ -9,10 +9,11 @@ const Task = ({task, onDelete, onToggle, onComplete}) =>{
                 <FaTimes style={{ color: 'red', cursor: 'pointer' }} onClick={() => onDelete(task.id)} />     
             </h3>
             <p>{`Due: ${task.day}`}</p>
-            <div>
+            <div className="task-footer">
                 <Link to={`/task/${task.id}`} className={`view-details ${task.completed ? 'completed' : ''}`}>View Details</Link>
+                <button className='btn-complete' onClick={() => onComplete(task.id)}>Completed? {!task.completed ? <FaRegSquare style={{ marginLeft: '10px' }} /> : <FaRegSquareCheck style={{marginLeft: '10px'}} />}</button>
             </div>
-            <button className='btn' onClick={() => onComplete(task.id)}>Completed? {!task.completed ? <FaRegSquare style={{ marginLeft: '10px' }} /> : <FaRegSquareCheck style={{marginLeft: '10px'}} />}</button>
+            
         </div>
     );
 };
